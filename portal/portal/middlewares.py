@@ -121,6 +121,20 @@ class RandomUserAgent(object):
     def process_request(self, request, spider):
         ua = UserAgent()
         request.headers['User-Agent'] = ua.random
-        proxy = random.choice(settings['PROXIES'])
+        # proxy = random.choice(settings['PROXIES'])
+        #
+        # request.meta['proxy'] = "http://" + proxy
 
-        request.meta['proxy'] = "http://" + proxy
+from selenium import webdriver
+from scrapy.http import HtmlResponse
+
+class JSPageMiddleware(object):
+    def process_request(self, request, spider):
+        if spider.name == "jindo":
+            # browser = webdriver.Chrome(executable_path="/Users/loong/Downloads/chromedriver")
+            spider.browser.get(request.url)
+            import time
+            time.sleep(3)
+            print("访问:{0}".format(request.url))
+
+            return HtmlResponse(url=spider.browser.current_url, body=spider.browser.page_source, encoding="utf-8", request=request)

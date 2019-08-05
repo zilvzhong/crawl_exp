@@ -13,52 +13,52 @@ BOT_NAME = 'portal'
 
 SPIDER_MODULES = ['portal.spiders']
 NEWSPIDER_MODULE = 'portal.spiders'
+# SPLASH_URL = 'http://0.0.0.0:8050/'
 
-
-PROXIES = [
-  "218.60.8.99:3129",
-  "212.64.51.13:8888",
-  "112.247.181.208:8060",
-  "118.26.170.209:8080",
-  "125.62.27.53:3128",
-  "183.146.213.198:80",
-  "117.127.16.207:8080",
-  "123.161.23.50:9797",
-  "120.234.63.196:3128",
-  "119.28.203.242:8000",
-  "171.80.112.60:9999",
-  "60.235.28.165:8088",
-  "47.52.231.140:8080",
-  "125.46.0.62:53281",
-  "175.18.152.45:8080",
-  "175.18.52.11:8080",
-  "221.2.174.3:8060",
-  "14.20.235.230:9797",
-  "82.114.241.138:8080",
-  "61.135.155.82:443",
-  "111.59.90.238:80",
-  "122.137.177.232:8080",
-  "27.191.234.69:9999",
-  "122.141.74.186:8080",
-  "39.137.69.6:8080",
-  "117.191.11.108:80",
-  "144.255.48.144:9999",
-  "211.101.154.105:43598",
-  "175.18.18.88:8080",
-  "119.48.180.254:9999",
-  "60.5.254.169:8081",
-  "121.69.46.177:9000",
-  "122.136.212.132:53281",
-  "101.231.234.38:8080",
-  "218.108.175.15:80",
-  "61.128.208.94:3128",
-  "180.107.179.44:8118",
-  "27.46.21.179:8888",
-  "202.162.34.115:53281",
-  "119.23.238.202:3128",
-  "58.249.55.222:9797",
-  "58.247.127.145:53281"
-]
+# PROXIES = [
+#   "218.60.8.99:3129",
+#   "212.64.51.13:8888",
+#   "112.247.181.208:8060",
+#   "118.26.170.209:8080",
+#   "125.62.27.53:3128",
+#   "183.146.213.198:80",
+#   "117.127.16.207:8080",
+#   "123.161.23.50:9797",
+#   "120.234.63.196:3128",
+#   "119.28.203.242:8000",
+#   "171.80.112.60:9999",
+#   "60.235.28.165:8088",
+#   "47.52.231.140:8080",
+#   "125.46.0.62:53281",
+#   "175.18.152.45:8080",
+#   "175.18.52.11:8080",
+#   "221.2.174.3:8060",
+#   "14.20.235.230:9797",
+#   "82.114.241.138:8080",
+#   "61.135.155.82:443",
+#   "111.59.90.238:80",
+#   "122.137.177.232:8080",
+#   "27.191.234.69:9999",
+#   "122.141.74.186:8080",
+#   "39.137.69.6:8080",
+#   "117.191.11.108:80",
+#   "144.255.48.144:9999",
+#   "211.101.154.105:43598",
+#   "175.18.18.88:8080",
+#   "119.48.180.254:9999",
+#   "60.5.254.169:8081",
+#   "121.69.46.177:9000",
+#   "122.136.212.132:53281",
+#   "101.231.234.38:8080",
+#   "218.108.175.15:80",
+#   "61.128.208.94:3128",
+#   "180.107.179.44:8118",
+#   "27.46.21.179:8888",
+#   "202.162.34.115:53281",
+#   "119.23.238.202:3128",
+#   "58.249.55.222:9797",
+#   "58.247.127.145:53281"
+# ]
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'portal (+http://www.yourdomain.com)'
@@ -74,7 +74,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 0.1
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -100,12 +100,16 @@ COOKIES_ENABLED = False
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   # 'portal.middlewares.PortalDownloaderMiddleware': 543,
-   'portal.middlewares.RandomUserAgent': 543,
-   'scrapy.downloadermiddleware.httpproxy.HttpProxyMiddleware': None
+   # 'portal.middlewares.JSPageMiddleware': 1,
+   # 'scrapy_splash.SplashCookiesMiddleware': 723,
+   # 'scrapy_splash.SplashMiddleware': 725,
+   'portal.middlewares.RandomUserAgent': 810,
+   # 'scrapy.downloadermiddleware.httpproxy.HttpProxyMiddleware': None
    # 'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
 
 }
+
+COMMANDS_MODULE = 'portal.commands'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
